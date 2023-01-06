@@ -10,9 +10,9 @@
                     <field name="training_date"/>
                 </xpath>
 
-                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='training_date']" position="after">
+                <!-- <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='training_date']" position="after">
                     <field name="employe_id"/>
-                </xpath>    
+                </xpath>     -->
             
             </field>
         </record>
