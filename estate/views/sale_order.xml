@@ -25,6 +25,10 @@
                     attrs="{'invisible': [('approval_state', 'not in', ['pending'])]}"
                     groups="sales_team.group_sale_manager"/>
                 </xpath>
+
+                <xpath expr="/form" position="inside">
+                    <button name="request_approval" type="object" string="Request Approval" class="btn-primary"/>
+                </xpath>
             
             </field>
         </record>
