@@ -14,6 +14,11 @@
                     <field name="employe_id"/>
                 </xpath>    
 
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="approval_level_required" widget="statinfo"/>
+                    <field name="approval_state" widget="statusbar" statusbar_visible="pending,approved,refused"/>
+                </xpath>
+
 
             
             </field>
