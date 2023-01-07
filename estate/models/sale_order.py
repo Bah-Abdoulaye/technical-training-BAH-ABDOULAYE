@@ -56,3 +56,11 @@ class SaleOrder(models.Model):
                     body=_("You have a new approval request for the following sale order:<br/><br/>"
                         "Total amount: %s<br/>"
                         "Customer: %s") % (total))
+
+
+    def approve(self):
+        for order in self:
+            # Update order state and perform other approval actions
+            order.write({'state': 'approved'})
+            # Decrement pending approvals counter of current user
+            self.env.user.pending_approvals -= 1
