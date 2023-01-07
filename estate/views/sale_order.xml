@@ -14,7 +14,7 @@
                     <field name="employe_id"/>
                 </xpath>    
 
-                <xpath expr="/form/sheet/notebook/page/field[@name='partner_id']/tree/field[@name='training_date']" position="after">
+                <xpath  expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='employe_id']" position="after">
                     <field name="approval_level_required" widget="statinfo"/>
                     <field name="approval_state" widget="statusbar" statusbar_visible="pending,approved,refused"/>
                 </xpath>
