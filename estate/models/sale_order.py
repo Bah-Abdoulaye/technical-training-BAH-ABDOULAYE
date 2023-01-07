@@ -34,3 +34,25 @@ class SaleOrder(models.Model):
                     'Formation prévue pour la date : %s' % line.training_date
                 )
         return result
+
+
+    def request_approval(self):
+        for order in self:
+            # Calculer le montant total de la commande
+            total_amount = sum(line.price_subtotal for line in order.order_line)
+            # Trouver les groupes dont le seuil d'approbation est supérieur ou égal au montant total
+            groups = self.env['res.groups'].search([('approval_threshold', '>=', total_amount)])
+            # Trouver les utilisateurs ayant le moins d'approbations en attente dans chaque groupe
+            users = []
+            for group in groups:
+                users += group.users.search([], order='pending_approvals ASC')
+            # Sélectionner l'utilisateur ayant le moins d'approbations en attente
+            user = users[0] if users else False
+            if user:
+                # Incrémenter le compteur des approbations en attente
+                user.pending_approvals += 1
+                # Envoyer un message à l'utilisateur dans le chat
+                order.message_post(
+                    body=_("You have a new approval request for the following sale order:<br/><br/>"
+                        "Total amount: %s<br/>"
+                        "Customer: %s") % (total))
