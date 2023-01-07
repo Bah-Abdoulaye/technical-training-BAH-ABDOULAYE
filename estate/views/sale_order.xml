@@ -29,6 +29,11 @@
                 <xpath expr="/form/sheet/notebook/page" position="inside">
                     <button name="request_approval" type="object" string="Request Approval" class="btn-primary"/>
                 </xpath>
+
+                <xpath expr="/form/sheet/notebook/page" position="inside">
+                    <button name="approve" string="Approve" type="object" class="oe_highlight"/>
+                </xpath>
+
             
             </field>
         </record>
