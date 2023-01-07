@@ -20,7 +20,6 @@
                 </xpath>
 
                 <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='approval_state']" position="after">
-                    <field name="confirm btn"/>
                     <button name="approve_order" string="Approve" type="object"
                     class="oe_highlight"
                     attrs="{'invisible': [('approval_state', 'not in', ['pending'])]}"
