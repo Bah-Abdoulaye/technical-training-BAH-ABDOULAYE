@@ -14,12 +14,14 @@
                     <field name="employe_id"/>
                 </xpath>    
 
-                <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="approval_level_required" widget="statinfo"/>
-                    <field name="approval_state" widget="statusbar" statusbar_visible="pending,approved,refused"/>
+
+
+                <xpath expr="//button[@name='action_confirm']" position="after">
+                    <button name="approve_order" string="Approve" type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('approval_state', 'not in', ['pending'])]}"
+                    groups="sales_team.group_sale_manager"/>
                 </xpath>
-
-
             
             </field>
         </record>
